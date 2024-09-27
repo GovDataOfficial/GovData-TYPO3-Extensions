@@ -1,0 +1,18 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  GdTypo3Extensions\GdSite\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+  GdTypo3Extensions\GdSite\Command\Reindex:
+    tags:
+      -
+        name: console.command
+        command: 'gd-site:reindex'
+        description: 'Cleans the remote search index and creates new entries for each editorial page in this index.
+        Usage: (native on the server) /srv/www/typo3/htdocs/typo3/sysext/core/bin/typo3 gd-site:reindex
+        (native in the docker container) /var/www/html/typo3/sysext/core/bin/typo3 gd-site:reindex
+        (dev outside of docker) docker exec -it gd-portal-typo3-headless sh -c "/var/www/html/typo3/sysext/core/bin/typo3 gd-site:reindex"'
+        schedulable: false

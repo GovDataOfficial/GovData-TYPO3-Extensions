@@ -1,0 +1,13 @@
+target
+.classpath
+.project
+.settings
+
+# IntelliJ
+.idea/*
+
+.phpunit.result.cache
+gd-site/public/*
+gd-site/vendor/*
+
+typo3temp/

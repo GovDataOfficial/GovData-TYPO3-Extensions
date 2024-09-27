@@ -1,0 +1,39 @@
+services:
+  typo3-db:
+    image: "mariadb:latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: "Test123#"
+      MYSQL_USER: "typo3"
+      MYSQL_PASSWORD: "Test123#"
+      MYSQL_DATABASE: "typo3"
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    healthcheck:
+      test: "/usr/bin/mariadb --user=root --password=Test123# --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 10
+
+  webapp:
+    image: "martinhelmich/typo3:12.4"
+    container_name: "gd-portal-typo3-headless"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      TYPO3_SERVER_TYPE: "apache"
+      TYPO3_DB_DRIVER: "mysqli"
+      TYPO3_DB_USERNAME: "typo3"
+      TYPO3_DB_PASSWORD: "Test123#"
+      TYPO3_DB_PORT: "3306"
+      TYPO3_DB_HOST: "db"
+      TYPO3_DB_DBNAME: "typo3"
+      TYPO3_SETUP_ADMIN_USERNAME: "admin"
+      TYPO3_SETUP_ADMIN_PASSWORD: "Test123#"
+    depends_on:
+      typo3-db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    links:
+      - "typo3-db:db"
+    volumes:
+      - ./typo3temp/var/log:/var/www/html/typo3temp/var/log

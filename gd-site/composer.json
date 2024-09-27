@@ -1,0 +1,24 @@
+{
+    "name": "typo3-documentation-team/gd-site",
+    "type": "typo3-cms-extension",
+    "description": "GovData extention to manage sites and blogs",
+    "homepage": "https://docs.typo3.org/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "gd-site"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "typo3/cms-composer-installers": true,
+            "typo3/class-alias-loader": true
+        }
+    },
+    "require-dev": {
+        "typo3/cms-core": "12.4.11",
+        "typo3/testing-framework": "^8",
+        "phpunit/phpunit": "^10"
+    }
+}
