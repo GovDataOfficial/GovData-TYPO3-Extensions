@@ -17,7 +17,7 @@
         }
     },
     "require-dev": {
-        "typo3/cms-core": "12.4.27",
+        "typo3/cms-core": "12.4.31",
         "typo3/testing-framework": "^8",
         "phpunit/phpunit": "^10"
     }
