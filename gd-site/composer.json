@@ -1,24 +1,36 @@
 {
-    "name": "typo3-documentation-team/gd-site",
-    "type": "typo3-cms-extension",
-    "description": "GovData extention to manage sites and blogs",
-    "homepage": "https://docs.typo3.org/",
-    "license": ["GPL-2.0-or-later"],
-    "keywords": ["TYPO3 CMS"],
-    "extra": {
-        "typo3/cms": {
-            "extension-key": "gd-site"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "typo3/cms-composer-installers": true,
-            "typo3/class-alias-loader": true
-        }
-    },
-    "require-dev": {
-        "typo3/cms-core": "12.4.31",
-        "typo3/testing-framework": "^8",
-        "phpunit/phpunit": "^10"
+  "name": "typo3-documentation-team/gd-site",
+  "type": "typo3-cms-extension",
+  "description": "GovData extention to manage sites and blogs",
+  "homepage": "https://docs.typo3.org/",
+  "license": ["GPL-2.0-or-later"],
+  "keywords": ["TYPO3 CMS"],
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "gd-site"
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
+    },
+    "audit": {
+      "block-insecure": false
+    }
+  },
+  "require": {
+    "typo3/cms-core": "^13",
+    "typo3/testing-framework": "^9",
+    "phpunit/phpunit": "^12"
+  },
+  "autoload": {
+    "psr-4": {
+      "GdTypo3Extensions\\GdSite\\": "Classes/"
+    }
+  },
+  "require-dev": {
+    "typo3/testing-framework": "^9",
+    "phpunit/phpunit": "^12"
+  }
 }

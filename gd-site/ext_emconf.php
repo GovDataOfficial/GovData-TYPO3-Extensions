@@ -5,15 +5,15 @@
  */
 $EM_CONF[$_EXTKEY] = [
     'title' => 'gd-site',
-    'version' => '1.0.0',
+    'version' => '1.1.0',
     'description' => 'Initial page structure for GovData',
     'category' => 'distribution',
     'constraints' => [
         'depends' => [
-            'typo3' => '12',
-            'fluid_styled_content' => '12',
-            'rte_ckeditor' => '12',
-            'headless' => '4.2.7'
+            'typo3' => '13',
+            'fluid_styled_content' => '13',
+            'rte_ckeditor' => '13',
+            'headless' => '4.5.0'
         ],
         'conflicts' => [],
     ],

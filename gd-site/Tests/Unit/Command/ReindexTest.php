@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-require_once __DIR__ . "/../../../Command/Reindex.php";
+require_once __DIR__ . "/../../../Classes/Command/Reindex.php";
 require_once __DIR__ . "/../../../Classes/Hook/DatabaseUtils.php";
 require_once __DIR__ . "/../../../Classes/Hook/SearchIndexService.php";
 
@@ -66,7 +66,7 @@ class ReindexTest extends UnitTestCase
     {
         if ($dbError) {
             $this->searchIndexServiceMock->method('deleteAllEntries');
-            $this->databaseUtilsMock->method('getAllIndexablePageIds')->willThrowException(new \Doctrine\DBAL\Exception());
+            $this->databaseUtilsMock->method('getAllIndexablePageIds')->willThrowException($this->createMock(\Doctrine\DBAL\Exception::class));
             $this->databaseUtilsMock->expects(self::never())->method('buildSearchIndexEntryFromPageId');
             $this->searchIndexServiceMock->expects(self::never())->method('save');
         } else {

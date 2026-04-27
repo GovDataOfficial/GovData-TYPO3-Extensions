@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.13.0 2026-04-27
+
+* Adds support for TYPO3 v13
+
 ## 7.6.0 2025-07-01
 
 * Update Typo3 version to 12.4.31

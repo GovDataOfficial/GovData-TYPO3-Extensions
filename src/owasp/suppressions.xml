@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
-  <suppress until="2025-08-01Z">
-    <notes>Suppress PHPUnit false positives or accepted risks</notes>
-    <packageUrl regex="true">^pkg:composer/phpunit/.*</packageUrl>
-    <vulnerabilityName regex="true">.*</vulnerabilityName>
-  </suppress>
-  <suppress until="2025-08-01Z">
-    <notes>Suppress testing-framework false positives or accepted risks</notes>
-    <packageUrl regex="true">^pkg:composer/typo3/testing-framework@.*$</packageUrl>
-    <vulnerabilityName regex="true">.*</vulnerabilityName>
-  </suppress>
 </suppressions>

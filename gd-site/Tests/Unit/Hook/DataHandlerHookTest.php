@@ -96,7 +96,7 @@ class DataHandlerHookTest extends UnitTestCase
 
         $this->dataHandlerMock->datamap = ['tt_content' => [4 => ['hidden' => 1]]];
         $this->dataHandlerMock->checkValue_currentRecord = ['pid' => $this->pageId];
-        $this->databaseUtilsMock->method('buildSearchIndexEntryFromPageId')->with($this->pageId)->willThrowException(new \Doctrine\DBAL\Exception());
+        $this->databaseUtilsMock->method('buildSearchIndexEntryFromPageId')->with($this->pageId)->willThrowException($this->createMock(\Doctrine\DBAL\Exception::class));
         $this->searchIndexServiceMock->expects(self::never())->method(self::anything());
 
         $this->subject->processCmdmap_afterFinish($this->dataHandlerMock);
@@ -204,7 +204,7 @@ class DataHandlerHookTest extends UnitTestCase
     #[Test]
     public function processDatamap_afterDatabaseOperations_content_dbError() {
         $contentId = 3;
-        $this->databaseUtilsMock->method('buildSearchIndexEntryFromContentId')->with($contentId)->willThrowException(new \Doctrine\DBAL\Exception());
+        $this->databaseUtilsMock->method('buildSearchIndexEntryFromContentId')->with($contentId)->willThrowException($this->createMock(\Doctrine\DBAL\Exception::class));
 
         $this->subject->processDatamap_afterDatabaseOperations('update', 'tt_content', $contentId, [], $this->dataHandlerMock);
 
@@ -257,7 +257,7 @@ class DataHandlerHookTest extends UnitTestCase
     public function processCmdmap_deleteAction_dbError() {
         $recordWasDeleted = false;
         $contentId = 3;
-        $this->databaseUtilsMock->method('getPageIdFromContentId')->with($contentId)->willThrowException(new \Doctrine\DBAL\Exception());
+        $this->databaseUtilsMock->method('getPageIdFromContentId')->with($contentId)->willThrowException($this->createMock(\Doctrine\DBAL\Exception::class));
 
         $this->subject->processCmdmap_deleteAction('tt_content', $contentId, ['hidden' => 0], $recordWasDeleted, $this->dataHandlerMock);
 
@@ -299,7 +299,7 @@ class DataHandlerHookTest extends UnitTestCase
             $this->databaseUtilsMock->method('buildSearchIndexEntryFromPageId')->with($this->pageId)->willReturn($this->searchIndexEntry);
             $this->searchIndexServiceMock->method('save')->with($this->searchIndexEntry)->willReturn(new Response());
         } else {
-            $this->databaseUtilsMock->method('buildSearchIndexEntryFromPageId')->with($this->pageId)->willThrowException(new \Doctrine\DBAL\Exception());
+            $this->databaseUtilsMock->method('buildSearchIndexEntryFromPageId')->with($this->pageId)->willThrowException($this->createMock(\Doctrine\DBAL\Exception::class));
             $this->searchIndexServiceMock->expects(self::never())->method(self::anything());
         }
 
